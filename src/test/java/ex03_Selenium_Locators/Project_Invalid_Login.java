@@ -1,22 +1,17 @@
 package ex03_Selenium_Locators;
 
 import io.qameta.allure.Description;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestSelenium01_Project_Locators_Selenium_ID_ClassName_Name {
+public class Project_Invalid_Login {
 
-    @Description
-    @Owner("Mohammed")
-    @Severity(SeverityLevel.BLOCKER)
-    @Test
+     @Test
 
-    public void test_VWO_login_Invalid_Login() {
+    public void Project_Invalid_Login() {
 
         ChromeDriver driver = new ChromeDriver();
         driver.get("https://app.vwo.com");
@@ -28,6 +23,9 @@ public class TestSelenium01_Project_Locators_Selenium_ID_ClassName_Name {
         password_input_box.sendKeys("Shaikh@2109");
         WebElement signup_button = driver.findElement(By.id("js-login-btn"));
         signup_button.click();
+        WebElement error_message = driver.findElement(By.className("notification-box-description"));
+         System.out.println(error_message.getText());
+         Assert.assertEquals(error_message.getText(),"Your email, password, IP address or location did not match");
 
 
         try {
@@ -40,3 +38,6 @@ public class TestSelenium01_Project_Locators_Selenium_ID_ClassName_Name {
 
 
 }
+
+
+
